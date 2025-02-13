@@ -29,7 +29,7 @@ const Hero = () => {
       </div> */}
 
 
-      <div className="relative lg:w-96 lg:h-96 bg-gray-300 rounded-lg shadow-lg lg:mr-20">
+      <div className="relative lg:w-96 lg:h-96 dark:bg-[#B0C4DE] rounded-lg shadow-lg lg:mr-20">
         {/* Frame */}
         {/* <div className="absolute inset-0 bg-gray-300 transform -rotate-6 rounded-lg shadow-lg border-4 border-gray-900"></div> */}
         
