@@ -1,9 +1,14 @@
+import Hero from "@/components/Hero";
+import ProudPartnerSection from "@/components/Partner";
+import BlogsPage from "./blogs/page";
 
 export default function Home() {
   return (
-    <div className="p-4 text-black">
-      <h1>My Homepage</h1>
-      <p>This is the homepage of my website.</p>
+    <div className="w-full mx-auto">
+      <Hero />
+      <ProudPartnerSection />
+      <BlogsPage />
+     
     </div>
   );
 }
