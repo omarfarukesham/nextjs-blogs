@@ -28,7 +28,7 @@ const BlogCard = ({ blogs }: BlogCardProps) => {
           key={blog._id} 
           className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
         >
-          <Link href={`/blog/${blog._id}`}>
+          <Link href={`/blogs/${blog._id}`}>
             {blog?.image && (
               <div className="relative h-48 w-full">
                 <Image
