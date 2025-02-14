@@ -4,6 +4,7 @@ import BlogsPage from "./blogs/page";
 import TestimonialPage from "@/components/Testimonial";
 import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SkillsSection from "@/components/Skills";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <ProudPartnerSection />
       <BlogsPage />
+      <SkillsSection />
       <TestimonialPage />
       <ContactSection />
       <Footer />

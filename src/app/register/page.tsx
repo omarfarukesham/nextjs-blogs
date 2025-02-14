@@ -19,7 +19,6 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const onSubmit = async (data: IData) => {
-    console.log(data)
     setLoading(true);
     setError(''); 
     try {

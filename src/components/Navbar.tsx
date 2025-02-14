@@ -86,7 +86,6 @@ const Navbar = () => {
       <div className="hidden lg:flex space-x-4 items-center">
         {user ? (
           <>
-            <span className="text-gray-300">Welcome</span>
             <button
               onClick={handleLogout}
               className="border border-white text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-red-500 transition duration-200"

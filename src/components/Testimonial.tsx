@@ -51,14 +51,14 @@ const TestimonialPage = () => {
   const [emblaRef] = useEmblaCarousel({ loop: true });
 
   return (
-    <div className="w-full mx-auto  bg-[#B0C4DE] py-12">
+    <div className="w-full mx-auto  bg-[#fff] py-12">
       <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Client Testimonials</h2>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="min-w-[300px] md:min-w-[600px] p-6 bg-white shadow-md rounded-lg mx-4"
+              className="min-w-[300px] md:min-w-[450px] p-6 bg-gray-800 text-white shadow-md rounded-lg mx-4"
             >
               <div className="flex items-center space-x-4 mb-4">
                 <Image
@@ -69,11 +69,11 @@ const TestimonialPage = () => {
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-500">{testimonial.country}</p>
+                  <h3 className="text-xl font-semibold text-white">{testimonial.name}</h3>
+                  <p className="text-sm text-white">{testimonial.country}</p>
                 </div>
               </div>
-              <p className="text-gray-700 leading-relaxed italic">
+              <p className="text-white leading-relaxed italic">
                 <FaQuoteLeft className="inline-block text-blue-500 mr-2" />
                 {testimonial.feedback}
                 <FaQuoteRight className="inline-block text-blue-500 ml-2" />

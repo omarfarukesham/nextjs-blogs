@@ -60,7 +60,6 @@ const DashboardPage = () => {
         }
       });
 
-      console.log(response);
       if (!response.ok) throw new Error('Failed to delete blog');
       
       setBlogs(blogs.filter(blog => blog._id !== deleteId));
