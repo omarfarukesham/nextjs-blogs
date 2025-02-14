@@ -1,17 +1,50 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoImg from '@/assets/om.png';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  interface User {
+    email: string;
+  }
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Check auth status on mount and when storage changes
+    const checkAuth = () => {
+      const authUser = sessionStorage.getItem('authUser');
+      setUser(authUser ? JSON.parse(authUser) : null);
+    };
+
+    // Initial check
+    checkAuth();
+
+    // Listen for storage changes
+    window.addEventListener('storage', checkAuth);
+    
+    // Custom event listener for login/logout
+    window.addEventListener('authChange', checkAuth);
+
+    return () => {
+      window.removeEventListener('storage', checkAuth);
+      window.removeEventListener('authChange', checkAuth);
+    };
+  }, []); 
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('authUser');
+    setUser(null); 
+    window.dispatchEvent(new Event('authChange'));
+  };
+
   return (
     <nav className="lg:w-[90%] mx-auto flex items-center justify-between bg-gray-800 text-white px-4 sticky top-0 z-20 border-b border-gray-700">
-      {/* Logo Section */}
       <div className="flex items-center">
         <button
           onClick={toggleMenu}
@@ -25,12 +58,7 @@ const Navbar = () => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
         </button>
         <Link href="/" className="ml-4">
@@ -38,7 +66,6 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Desktop Menu */}
       <ul className="hidden lg:flex space-x-6">
         <li className="hover:text-gray-300">
           <Link href="/">Home</Link>
@@ -49,28 +76,37 @@ const Navbar = () => {
         <li className="hover:text-gray-300">
           <Link href="/blogs">Blogs</Link>
         </li>
-        <li className="hover:text-gray-300">
-          <Link href="/dashboard">Dashboard</Link>
-        </li>
+        {user && (
+          <li className="hover:text-gray-300">
+            <Link href="/dashboard">Dashboard</Link>
+          </li>
+        )}
       </ul>
 
-      {/* Login & Register Buttons */}
-      <div className="hidden lg:flex space-x-4">
-        <Link
-          href="/login"
-          className="border border-white text-white px-4 py-2 rounded-lg bg-transparent hover:bg-white hover:text-gray-800 transition duration-200"
-        >
-          Login
-        </Link>
-        <Link
-          href="/register"
-          className="border border-white text-white px-4 py-2 rounded-lg bg-transparent hover:bg-white hover:text-gray-800 transition duration-200"
-        >
-          Register
-        </Link>
+      <div className="hidden lg:flex space-x-4 items-center">
+        {user ? (
+          <>
+            <span className="text-gray-300">Welcome</span>
+            <button
+              onClick={handleLogout}
+              className="border border-white text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-red-500 transition duration-200"
+            >
+              <FaSignOutAlt className="h-5 w-5" />
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="/login" className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 transition duration-200">
+              Login
+            </Link>
+            <Link href="/register" className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 transition duration-200">
+              Register
+            </Link>
+          </>
+        )}
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <ul className="absolute top-16 left-0 z-10 w-full bg-gray-900 text-white p-4 lg:hidden">
           <li className="py-2 px-4 hover:bg-gray-700">
@@ -82,15 +118,25 @@ const Navbar = () => {
           <li className="py-2 px-4 hover:bg-gray-700">
             <Link href="/blogs" onClick={toggleMenu}>Blogs</Link>
           </li>
-          <li className="py-2 px-4 hover:bg-gray-700">
-            <Link href="/support" onClick={toggleMenu}>Support</Link>
-          </li>
-          <li className="py-2 px-4 hover:bg-gray-700">
-            <Link href="/login" onClick={toggleMenu}>Login</Link>
-          </li>
-          <li className="py-2 px-4 hover:bg-gray-700">
-            <Link href="/register" onClick={toggleMenu}>Register</Link>
-          </li>
+          {user ? (
+            <>
+              <li className="py-2 px-4 hover:bg-gray-700">
+                <Link href="/dashboard" onClick={toggleMenu}>Dashboard</Link>
+              </li>
+              <li className="py-2 px-4 hover:bg-red-500">
+                <button onClick={() => { handleLogout(); toggleMenu(); }}>Logout</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="py-2 px-4 hover:bg-gray-700">
+                <Link href="/login" onClick={toggleMenu}>Login</Link>
+              </li>
+              <li className="py-2 px-4 hover:bg-gray-700">
+                <Link href="/register" onClick={toggleMenu}>Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       )}
     </nav>

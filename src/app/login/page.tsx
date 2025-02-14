@@ -12,6 +12,7 @@ interface ILoginData {
   password: string;
 }
 
+
 export default function LoginPage() {
   const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<ILoginData>();
@@ -33,15 +34,13 @@ export default function LoginPage() {
       }
   
       const result = await response.json();
-      console.log('Login result:', result.data);
 
       // Save token in sessionStorage
       if (result.status && result.data.token) {
         sessionStorage.setItem('authToken', result.data.token);
-
-        //token decode
         const decodedToken = verifyToken(result.data.token);
         sessionStorage.setItem('authUser', JSON.stringify(decodedToken));
+        window.dispatchEvent(new Event('authChange'));
         router.push('/dashboard');
       }
     } catch (error) {
@@ -68,7 +67,7 @@ export default function LoginPage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-xl sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)} >
             {/* Email Input */}
             <div>
               <label className="block text-sm font-medium text-gray-700">Email Address</label>
