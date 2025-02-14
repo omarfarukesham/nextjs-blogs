@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import Link from 'next/link';
+import { verifyToken } from '@/utils/verifyToken';
 
 interface ILoginData {
   email: string;
@@ -26,21 +27,30 @@ export default function LoginPage() {
         },
         body: JSON.stringify(data),
       });
-
+  
       if (!response.ok) {
         throw new Error('Login failed');
       }
+  
+      const result = await response.json();
+      console.log('Login result:', result.data);
 
-      console.log(response)
+      // Save token in sessionStorage
+      if (result.status && result.data.token) {
+        sessionStorage.setItem('authToken', result.data.token);
 
-      router.push('/dashboard');
+        //token decode
+        const decodedToken = verifyToken(result.data.token);
+        sessionStorage.setItem('authUser', JSON.stringify(decodedToken));
+        router.push('/dashboard');
+      }
     } catch (error) {
       console.error('Login error:', error);
-      // Handle login error (show message to the user)
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

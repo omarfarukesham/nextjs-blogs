@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
-import contactImg from '@/assets/contact.png';
+import contactImg from '@/assets/contact.jpg';
 
 const ContactSection = () => {
   return (
-    <section className="w-full mx-auto  bg-white p-4">
-      <h2 className="text-3xl font-bold text-gray-900 my-8 text-center">Get in Touch</h2>
-      <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+    <section className="w-full mx-auto  bg-white">
+      <h2 className="text-3xl font-bold text-gray-900 text-center">Get in Touch</h2>
+      <div className="flex flex-col md:flex-row bg-whites overflow-hidden">
         {/* Left Side - Image */}
         <div className="md:w-1/2 ">
           <Image

@@ -51,7 +51,7 @@ const TestimonialPage = () => {
   const [emblaRef] = useEmblaCarousel({ loop: true });
 
   return (
-    <div className="w-full mx-auto  bg-gray-50 p-8">
+    <div className="w-full mx-auto  bg-[#B0C4DE] py-12">
       <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Client Testimonials</h2>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
