@@ -2,9 +2,6 @@ import Image from 'next/image';
 import { FaUser, FaCalendar, FaClock, FaComments } from 'react-icons/fa';
 
 
-  
-
-
   const BlogDetails = async ({ params }: { params: Promise<{ blogId: string }> }) => {
     const { blogId } = await params;
     const res = await fetch(`https://assignment-3-gray-seven.vercel.app/api/blogs/${blogId}`, {
