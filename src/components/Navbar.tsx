@@ -76,6 +76,12 @@ const Navbar = () => {
         <li className="hover:text-gray-300">
           <Link href="/blogs">Blogs</Link>
         </li>
+        <li className="hover:text-gray-300">
+            <Link href="/projects">Projects</Link>
+          </li>
+          <li className="hover:text-gray-300">
+            <Link href="/contact">Contact</Link>
+          </li>
         {user && (
           <li className="hover:text-gray-300">
             <Link href="/dashboard">Dashboard</Link>
@@ -116,6 +122,12 @@ const Navbar = () => {
           </li>
           <li className="py-2 px-4 hover:bg-gray-700">
             <Link href="/blogs" onClick={toggleMenu}>Blogs</Link>
+          </li>
+          <li className="py-2 px-4 hover:bg-gray-700">
+            <Link href="/projects" onClick={toggleMenu}>Projects</Link>
+          </li>
+          <li className="py-2 px-4 hover:bg-gray-700">
+            <Link href="/contact" onClick={toggleMenu}>Contact</Link>
           </li>
           {user ? (
             <>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaUser, FaCog, FaHome, FaAddressBook } from "react-icons/fa";
+import { FaMessage } from "react-icons/fa6";
 
 const Sidebar = () => {
   return (
@@ -30,6 +31,15 @@ const Sidebar = () => {
           >
             <FaAddressBook className="h-5 w-5" />
             <span>Add Blog</span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/dashboard/messages"
+            className="flex items-center space-x-2 p-3 rounded-md hover:bg-gray-200 text-gray-700"
+          >
+            <FaMessage className="h-5 w-5" />
+            <span>Client Msg</span>
           </Link>
         </li>
         <li>
