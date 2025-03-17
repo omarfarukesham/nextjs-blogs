@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-10">
+    <footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-10">
       <div className="container mx-auto px-4">
         {/* Footer Top Section */}
         <div className="flex flex-col md:flex-row justify-between mb-8">
@@ -57,7 +57,7 @@ const Footer = () => {
 
         {/* Footer Bottom Section */}
         <div className="border-t border-gray-700 pt-4 text-center">
-          <p className="text-sm">&copy; 2025 Omars Blog. All rights reserved.</p>
+          <p className="text-sm">&copy; 2025 Anas Blog. All rights reserved.</p>
         </div>
       </div>
     </footer>

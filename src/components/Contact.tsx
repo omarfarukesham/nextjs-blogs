@@ -1,12 +1,18 @@
+'use client';
 import Image from 'next/image';
 import React from 'react';
 import { FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
 import contactImg from '@/assets/contact.jpg';
+import toast from 'react-hot-toast';
 
 const ContactSection = () => {
+
+  const handleSendMessage = () => {
+    toast.success('Message sent successfully!');
+  };
   return (
     <section className="w-full mx-auto  bg-white">
-      <h2 className="text-3xl font-bold text-gray-900 text-center">Get in Touch</h2>
+      <h2 className="text-3xl font-bold text-gray-900 text-center pt-10">Get in Touch</h2>
       <div className="flex flex-col md:flex-row bg-whites overflow-hidden">
         {/* Left Side - Image */}
         <div className="md:w-1/2 ">
@@ -60,7 +66,8 @@ const ContactSection = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white font-bold py-3 rounded-lg hover:bg-blue-600 transition"
+              onClick={handleSendMessage}
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 rounded-lg hover:bg-blue-600 transition"
             >
               Send Message
             </button>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logoImg from '@/assets/om.png';
+import logoImg from '@/assets/anasLogo1.png';
 import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="lg:w-[90%] mx-auto flex items-center justify-between bg-gray-800 text-white px-4 sticky top-0 z-20 border-b border-gray-700">
+    <nav className="lg:w-[90%] mx-auto flex items-center justify-between bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 sticky top-0 z-20 border-b border-gray-700">
       <div className="flex items-center">
         <button
           onClick={toggleMenu}
@@ -76,9 +76,9 @@ const Navbar = () => {
         <li className="hover:text-gray-300">
           <Link href="/blogs">Blogs</Link>
         </li>
-        <li className="hover:text-gray-300">
+        {/* <li className="hover:text-gray-300">
             <Link href="/projects">Projects</Link>
-          </li>
+          </li> */}
           <li className="hover:text-gray-300">
             <Link href="/contact">Contact</Link>
           </li>
@@ -96,18 +96,18 @@ const Navbar = () => {
               onClick={handleLogout}
               className="border border-white text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-red-500 transition duration-200"
             >
-              <FaSignOutAlt className="h-5 w-5" />
+              <FaSignOutAlt className="h-4 w-4" />
               Logout
             </button>
           </>
         ) : (
           <>
-            <Link href="/login" className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 transition duration-200">
+            <Link href="/login" className="border border-white text-white px-2 py-1 text-xs  rounded-lg hover:bg-white hover:text-gray-800 transition duration-200">
               Login
             </Link>
-            <Link href="/register" className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 transition duration-200">
+            {/* <Link href="/register" className="border border-white text-white text-xs px-2 py-1 rounded-lg hover:bg-white hover:text-gray-800 transition duration-200">
               Register
-            </Link>
+            </Link> */}
           </>
         )}
       </div>
@@ -123,9 +123,9 @@ const Navbar = () => {
           <li className="py-2 px-4 hover:bg-gray-700">
             <Link href="/blogs" onClick={toggleMenu}>Blogs</Link>
           </li>
-          <li className="py-2 px-4 hover:bg-gray-700">
+          {/* <li className="py-2 px-4 hover:bg-gray-700">
             <Link href="/projects" onClick={toggleMenu}>Projects</Link>
-          </li>
+          </li> */}
           <li className="py-2 px-4 hover:bg-gray-700">
             <Link href="/contact" onClick={toggleMenu}>Contact</Link>
           </li>
@@ -143,9 +143,9 @@ const Navbar = () => {
               <li className="py-2 px-4 hover:bg-gray-700">
                 <Link href="/login" onClick={toggleMenu}>Login</Link>
               </li>
-              <li className="py-2 px-4 hover:bg-gray-700">
+              {/* <li className="py-2 px-4 hover:bg-gray-700">
                 <Link href="/register" onClick={toggleMenu}>Register</Link>
-              </li>
+              </li> */}
             </>
           )}
         </ul>

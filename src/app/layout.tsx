@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import ToastProvider from "@/utils/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" data-theme="light">
       <body className="bg-slate-200">
         <Navbar />
+        <ToastProvider />
         <ErrorBoundary>
         <div className="min-h-screen w-[90%] mx-auto">{children}</div>
         </ErrorBoundary>

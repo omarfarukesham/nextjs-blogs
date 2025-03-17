@@ -42,8 +42,8 @@ export default function ContactPage() {
     <div className="bg-gray-100 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-600">Wed love to hear from you. Fill out the form below.</p>
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Contact Me</h1>
+          <p className="text-lg text-gray-600">I would love to hear from you. Fill out the form below.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -54,15 +54,15 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-center">
                   <FaEnvelope className="text-indigo-600 mr-4" />
-                  <span className="text-gray-700">twopointo.dev</span>
+                  <span className="text-gray-700">immohammadanas.com</span>
                 </div>
                 <div className="flex items-center">
                   <FaPhone className="text-indigo-600 mr-4" />
-                  <span className="text-gray-700">+880 1775-070627</span>
+                  <span className="text-gray-700">+966 57 616 3141</span>
                 </div>
                 <div className="flex items-center">
                   <FaMapMarkerAlt className="text-indigo-600 mr-4" />
-                  <span className="text-gray-700">Shanitinogor, Dhaka, Bangladesh</span>
+                  <span className="text-gray-700">SHANAMIN / Dammam, Saudi Arabia</span>
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
+                    className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white  hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
                       loading ? 'opacity-75 cursor-not-allowed' : ''
                     }`}
                   >
